@@ -2,12 +2,14 @@
 
 import * as vscode from 'vscode';
 
-class CustomPattern {
-    public readonly pattern: string;
-    public readonly foreground: string;
-    public readonly background: string;
-    public readonly regexes: RegExp[];
-    public readonly decoration: vscode.TextEditorDecorationType;
+export class CustomPattern {
+    public pattern: string;
+    public foreground: string;
+    public background: string;
+    public regexes: RegExp[];
+    public decoration: vscode.TextEditorDecorationType;
+    public category: string;
+    public active: boolean;
 
     public constructor(
         pattern: string, foreground: string, background: string, fontWeight: string,
@@ -64,4 +66,3 @@ class CustomPattern {
     }
 }
 
-export = CustomPattern;

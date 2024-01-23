@@ -44,6 +44,48 @@
 				"path": "./syntaxes/log.tmLanguage"
 			}
 		],
+		"commands": [
+			{
+				"command": "logFileHighlighter.editEntry",
+				"title": "Edit",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
+			},
+			{
+				"command": "logFileHighlighter.refresh",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			}
+			],
+			"menus": {
+				"view/item/context": [
+					{
+						"command": "logFileHighlighter.editEntry",
+						"when": "view == logFileHighlighter && viewItem == logOption",
+						"group": "inline"
+					}
+				],
+				"view/title": [
+					{
+						"command": "logFileHighlighter.refresh",
+						"when": "view == logFileHighlighter",
+						"group": "navigation"
+					}
+				]
+			},
+			"views": {
+			"explorer": [
+				{
+					"id": "logFileHighlighter",
+					"name": "Log Highlighter Settings"
+				}
+			]
+		},
 		"configuration": {
 			"type": "object",
 			"title": "The vscode-logfile-highlighter configuration.",
@@ -60,6 +102,16 @@
 								"type": "string",
 								"title": "The pattern that will be highlighted.",
 								"description": "Either the exact string to highlight, or a regular expression pattern."
+							},
+							"category": {
+								"title": "Category",
+								"type": "string",
+								"description": "The category that this pattern belongs to. This is used for grouping patterns with the same category property."
+							},
+							"active": {
+								"title": "Active",
+								"type": "boolean",
+								"description": "This determines whether this pattern is actively being applied to documents."
 							},
 							"foreground": {
 								"format": "color-hex",
@@ -115,7 +167,8 @@
 							}
 						},
 						"required": [
-							"pattern"
+							"pattern",
+							"active"
 						]
 					},
 					"title": "Custom highlighting patterns.",

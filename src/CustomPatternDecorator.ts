@@ -1,7 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import CustomPattern = require('./CustomPattern');
+import {CustomPattern} from './CustomPattern';
 
 class CustomPatternDecorator {
 
